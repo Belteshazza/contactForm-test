@@ -11,7 +11,8 @@ class ContactsController extends Controller
 {
 
     public function store(Request $request){
-    // Validate the form data
+   
+        // Validate the form data
     $validatedData = $request->validate([
         'name' => 'required|max:255',
         'email' => 'required|email|max:255',
@@ -45,6 +46,6 @@ class ContactsController extends Controller
         'message' => 'Your submission has been received',
     ], 201);
     
-}
+  }
 
 }
