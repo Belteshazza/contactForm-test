@@ -13,7 +13,7 @@ class ContactSubmissionNotification extends Mailable
 
     public $submission;
 
-    public function __construct(ContactSubmission $submission)
+    public function __construct($submission)
     {
         $this->submission = $submission;
     }
