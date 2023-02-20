@@ -7,18 +7,20 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 ## Solution to Coding Test:
 
 Create a RESTFUL API for a contact form that stores its record in the dB
 The fields in the form should include:
-a. Name
-b. Email
-c. Attachment
-d. Message
+
+- a. Name
+
+- b. Email
+
+- c. Attachment
+
+- d. Message
+
 The form should prevent duplicate submission and send email notifications to a value specified in your .env. 
 The contact form should allow only PNG, SVG and CSV attachments.
 Write unit tests that cover at least one(1) edge case of your choice.
