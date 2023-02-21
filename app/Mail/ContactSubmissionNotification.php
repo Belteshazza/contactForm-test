@@ -20,7 +20,7 @@ class ContactSubmissionNotification extends Mailable
 
     public function build()
     {
-        return $this->view('emails.contact-submission-notification')
+        return $this->view('emails.contactSubmissionNotification')
                     ->with([
                         'submission' => $this->submission,
                     ]);
