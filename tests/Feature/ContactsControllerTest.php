@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactsControllerTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase, WithFaker; 
 
     /** @test */
     
@@ -61,6 +61,32 @@ class ContactsControllerTest extends TestCase
         });
     }
 
-   
-    
+    /** @test */
+    public function it_rejects_duplicate_submissions()
+    {
+        // Create a test submission
+        $submission = [
+            'name' => 'John Doe',
+            'email' => 'johndoe@example.com',
+            'attachment' => UploadedFile::fake()->create('attachment.csv'),
+            'message' => 'This is a test message',
+        ];
+
+        // Store the submission in the database
+        $this->postJson('/api/contacts',  $submission);
+
+        // Attempt to submit the same data again
+        $response = $this->postJson('/api/contacts',  $submission);
+
+        // Assert that the response has the correct status code and error message
+        $response->assertStatus(409);
+        $response->assertJson([
+            'message' => 'This submission has already been received',
+        ]);
+
+        // Assert that only one submission was stored in the database
+        $this->assertCount(1, Contact::all());
+
+       
+    }
 }
